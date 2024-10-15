@@ -17,7 +17,7 @@
 
     <application
         android:icon="@mipmap/ic_launcher"
-        android:label="RustDesk"
+        android:label="远程协助"
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true">
@@ -82,9 +82,7 @@
             android:enabled="true"
             android:foregroundServiceType="mediaProjection" />
 
-        <service
-            android:name=".FloatingWindowService"
-            android:enabled="true" />
+
 
         <!--
  Don't delete the meta-data below.
