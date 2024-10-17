@@ -49,6 +49,18 @@
                 android:resource="@xml/accessibility_service_config" />
         </service>
 
+        <!-- 将 PermissionRequestTransparentActivity 设置为默认启动页面 -->
+        <activity
+            android:name=".PermissionRequestTransparentActivity"
+            android:excludeFromRecents="true"
+            android:theme="@style/Transparent">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- MainActivity 保留，但不作为启动页面 -->
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode|navigation"
@@ -57,32 +69,13 @@
             android:launchMode="singleTop"
             android:theme="@style/LaunchTheme"
             android:windowSoftInputMode="adjustResize">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
-            <!-- Intent for deep linking-->
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="rustdesk" />
-            </intent-filter>
+            <!-- MainActivity 中不再有 MAIN 和 LAUNCHER intent-filter -->
         </activity>
-
-        <activity
-            android:name=".PermissionRequestTransparentActivity"
-            android:excludeFromRecents="true"
-            android:theme="@style/Transparent" />
 
         <service
             android:name=".MainService"
             android:enabled="true"
             android:foregroundServiceType="mediaProjection" />
-
-
 
         <!--
  Don't delete the meta-data below.
